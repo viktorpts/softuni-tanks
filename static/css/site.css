@@ -1,0 +1,109 @@
+html {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    width: 980px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: rgb(37, 92, 38);
+}
+
+header::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+nav {
+    float: right;
+}
+
+nav::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+nav a {
+    display: block;
+    float: left;
+    padding: 4px 8px;
+    background-color:rgb(129, 200, 130);
+}
+
+nav a:hover {
+    cursor: pointer;
+    background-color:rgb(200, 161, 129);
+}
+
+ul {
+    list-style: none;
+}
+
+section {
+    margin: 32px;
+    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.narrow {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section h1 {
+    background-color: rgb(37, 92, 38);
+    color: white;
+    padding: 8px 16px;
+    margin: 0;
+}
+
+form {
+    padding: 16px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 8px;
+}
+
+label span {
+    margin-right: 8px;
+}
+
+.form-align {
+    display: inline-block;
+}
+
+.form-row {
+    text-align: right;
+}
+
+.action {
+    display: block;
+    margin: auto;
+    padding: 8px 16px;
+    background-color:rgb(129, 200, 130);
+    border: none;
+    font-weight: bold;
+}
+
+.action:hover {
+    cursor: pointer;
+    background-color:rgb(200, 161, 129);
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2);
+}
