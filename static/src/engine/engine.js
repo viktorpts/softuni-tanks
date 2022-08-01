@@ -1,3 +1,12 @@
+document.addEventListener('keydown', event => {
+    engine?.onKey(event.code, true);
+});
+document.addEventListener('keyup', event => {
+    engine?.onKey(event.code, false);
+});
+
+let engine = null;
+
 export async function createRenderer() {
     const images = {};
     const imgList = [
@@ -16,7 +25,7 @@ export async function createRenderer() {
     ctx.font = '20px Consolas, sans-serif';
     ctx.imageSmoothingEnabled = false;
 
-    const engine = {
+    engine = {
         STEP_SIZE: 1000 / 50,
         STEP_SIZE_S: 1 / 50,
         WIDTH: canvas.width,
@@ -51,13 +60,6 @@ export async function createRenderer() {
             }
         }
     };
-
-    document.addEventListener('keydown', event => {
-        engine.onKey(event.code, true);
-    });
-    document.addEventListener('keyup', event => {
-        engine.onKey(event.code, false);
-    });
 
     return engine;
 

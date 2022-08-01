@@ -3,10 +3,10 @@ const socketIO = require('socket.io');
 
 const STEP_SIZE_S = 1 / 50;
 const SHOT_SPEED = 600;
-const WIDTH = 1200;
-const HEIGHT = 800;
+const WIDTH = 800;
+const HEIGHT = 600;
 
-const TANK_SIZE = 25;
+const TANK_SIZE = 15;
 
 
 function init(server) {
@@ -44,6 +44,8 @@ function init(server) {
             socket.emit('players', [...rooms[roomId].players.entries()]);
             socket.to(roomId).emit('playerJoined', { username, player });
             rooms[roomId].players.set(username, player);
+
+            console.log(rooms);
         });
 
         socket.on('position', playerData => {
@@ -54,6 +56,7 @@ function init(server) {
         });
 
         socket.on('fire', shot => {
+            console.log(shot, socket.id);
             if (rooms[roomId]) {
                 rooms[roomId].projectiles.push(shot);
             }
@@ -64,6 +67,7 @@ function init(server) {
             if (username != null && roomId != null) {
                 io.to(roomId).emit('playerLeft', username);
                 rooms[roomId].players.delete(username);
+                console.log(rooms);
             }
         });
     });

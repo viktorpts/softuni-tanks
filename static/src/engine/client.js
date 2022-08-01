@@ -1,13 +1,25 @@
 /* globals io */
 
 
+let socket = null;
+
+export function closeSocket() {
+    if (socket != null) {
+        socket.disconnect();
+    }
+}
+
 export async function connect(username, roomId, player) {
     return new Promise((resolve, reject) => {
-        const socket = io.connect();
+        closeSocket();
+        socket = io.connect();
 
         const client = {
             position(player) {
                 socket.emit('position', player);
+            },
+            fire(shot) {
+                socket.emit('fire', shot);
             },
             onPlayerJoined() { },
             onPlayerLeft() { },

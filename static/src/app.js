@@ -1,3 +1,4 @@
+import { closeSocket } from './engine/client.js';
 import page from './lib/page.mjs';
 import { addLogout } from './middelwares/logout.js';
 import { addRender } from './middelwares/render.js';
