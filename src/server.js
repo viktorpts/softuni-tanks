@@ -44,8 +44,6 @@ function init(server) {
             socket.emit('players', [...rooms[roomId].players.entries()]);
             socket.to(roomId).emit('playerJoined', { username, player });
             rooms[roomId].players.set(username, player);
-
-            console.log(rooms);
         });
 
         socket.on('position', playerData => {
@@ -56,7 +54,6 @@ function init(server) {
         });
 
         socket.on('fire', shot => {
-            console.log(shot, socket.id);
             if (rooms[roomId]) {
                 rooms[roomId].projectiles.push(shot);
             }
@@ -67,7 +64,6 @@ function init(server) {
             if (username != null && roomId != null) {
                 io.to(roomId).emit('playerLeft', username);
                 rooms[roomId].players.delete(username);
-                console.log(rooms);
             }
         });
     });

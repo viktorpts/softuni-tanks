@@ -1,5 +1,5 @@
-import { connect } from './client.js';
-import { createRenderer } from './engine.js';
+import { closeSocket, connect } from './client.js';
+import { closeEngine, createRenderer } from './engine.js';
 
 
 const ACCELERATION = 600;
@@ -10,6 +10,11 @@ const TANK_SIZE = 15;
 const DASH_SPEED = 600;
 const DASH_TIME = 0.25;
 const DASH_COOLDOWN = 5;
+
+export function closeGame() {
+    closeSocket();
+    closeEngine();
+}
 
 export async function start(username, gameId) {
     const controls = {};

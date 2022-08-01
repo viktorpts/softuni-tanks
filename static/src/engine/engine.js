@@ -7,6 +7,12 @@ document.addEventListener('keyup', event => {
 
 let engine = null;
 
+export function closeEngine() {
+    if (engine) {
+        engine.going = false;
+    }
+}
+
 export async function createRenderer() {
     const images = {};
     const imgList = [
@@ -26,6 +32,7 @@ export async function createRenderer() {
     ctx.imageSmoothingEnabled = false;
 
     engine = {
+        going: true,
         STEP_SIZE: 1000 / 50,
         STEP_SIZE_S: 1 / 50,
         WIDTH: canvas.width,
@@ -49,14 +56,16 @@ export async function createRenderer() {
                 if (delta > 1000) {
                     delta = engine.STEP_SIZE;
                 }
-                while(delta >= engine.STEP_SIZE) {
+                while (delta >= engine.STEP_SIZE) {
                     delta -= engine.STEP_SIZE;
                     tick();
                 }
 
                 render();
 
-                requestAnimationFrame(main);
+                if (engine.going) {
+                    requestAnimationFrame(main);
+                }
             }
         }
     };

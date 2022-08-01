@@ -1,4 +1,3 @@
-import { closeSocket } from './engine/client.js';
 import page from './lib/page.mjs';
 import { addLogout } from './middelwares/logout.js';
 import { addRender } from './middelwares/render.js';
@@ -10,6 +9,7 @@ import { detailsView } from './views/details.js';
 import { homeView } from './views/home.js';
 import { loginView } from './views/login.js';
 import { regsiterView } from './views/register.js';
+import { closeGame } from './engine/game.js';
 
 
 const main = document.getElementById('main');
@@ -24,8 +24,10 @@ page('/register', regsiterView);
 page('/games', catalogView);
 page('/games/:id', detailsView);
 page('/play/:id', canvasView);
+page.exit('/play/:id', (ctx, next) => {
+    closeGame();
+    next();
+});
 page('/create', createView);
 
 page.start();
-
-
