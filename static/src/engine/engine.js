@@ -17,14 +17,47 @@ export async function createRenderer() {
     ctx.imageSmoothingEnabled = false;
 
     const engine = {
+        STEP_SIZE: 1000 / 50,
+        STEP_SIZE_S: 1 / 50,
         WIDTH: canvas.width,
         HEIGHT: canvas.height,
         clear,
         drawGrid,
         drawImage,
         drawCircle,
-        drawText
+        drawText,
+        onKey() { },
+        registerMain(render, tick) {
+            let last = performance.now();
+            let delta = 0;
+
+            main(last);
+
+            function main(time) {
+                delta += time - last;
+                last = time;
+
+                if (delta > 1000) {
+                    delta = engine.STEP_SIZE;
+                }
+                while(delta >= engine.STEP_SIZE) {
+                    delta -= engine.STEP_SIZE;
+                    tick();
+                }
+
+                render();
+
+                requestAnimationFrame(main);
+            }
+        }
     };
+
+    document.addEventListener('keydown', event => {
+        engine.onKey(event.code, true);
+    });
+    document.addEventListener('keyup', event => {
+        engine.onKey(event.code, false);
+    });
 
     return engine;
 
@@ -92,6 +125,6 @@ export async function createRenderer() {
 
     function drawText(text, x, y, color = 'black') {
         ctx.fillStyle = color;
-        ctx.fillText(text, x ,y);
+        ctx.fillText(text, x, y);
     }
 }
