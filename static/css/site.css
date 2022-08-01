@@ -102,8 +102,23 @@ label span {
     font-weight: bold;
 }
 
-.action:hover {
+.action:hover, .button:hover {
     cursor: pointer;
     background-color:rgb(200, 161, 129);
     box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color:rgb(129, 200, 130);
+    border: none;
+    font-weight: bold;
+}
+
+canvas {
+    display: block;
+    border: 1px solid orange;
+    margin-left: auto;
+    margin-right: auto;
 }
