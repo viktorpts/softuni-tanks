@@ -143,7 +143,6 @@ export async function start(username, gameId) {
         engine.drawGrid();
 
         const players = Object.keys(tanks);
-        engine.drawText(`${players.length} player${players.length > 1 ? 's' : ''}`, 10, 90);
 
         for (let i = 0; i < players.length; i++) {
             const user = players[i];
@@ -169,6 +168,12 @@ export async function start(username, gameId) {
             }
         }
         hits = hits.filter(h => h.alive);
+
+        engine.drawText(`${players.length} player${players.length > 1 ? 's' : ''}`, 10, 90);
+        for (let i = 0; i < players.length; i++) {
+            const user = players[i];
+            engine.drawText(user, 10, 110 + (20 * i), user == username ? 'green' : 'red');
+        }
 
         engine.drawText('Speed: ' + player.speed, 10, 30);
         engine.drawText('Dash: ' + player.dash.toFixed(1), 10, 50);

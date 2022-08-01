@@ -2,7 +2,7 @@ import { html } from '../lib/lit-html.js';
 
 export const layoutTemplate = (body, onLogout, user) => html`
 <header>
-    <a href="/"><span class="logo">Tank Game</span></a>
+    <a class="logo" href="/"><img class="logo-img" src="/assets/tank.png"><span>Tank Game</span></a>
     <nav>
         <a href="/games">View Lobbies</a>
         ${user ? html`
@@ -12,6 +12,4 @@ export const layoutTemplate = (body, onLogout, user) => html`
         <a href="/register">Register</a>`}
     </nav>
 </header>
-<main>
-    ${body}
-</main>`;
+${body}`;

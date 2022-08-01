@@ -7,11 +7,10 @@ import { getAllGames } from '../api/games.js';
 const catalogTemplate = (gamesPromise) => html`
 <section>
     <h1>Game Lobbies</h1>
-    ${until(gamesPromise, 'Loading games...')}
+    <main>
+        ${until(gamesPromise, 'Loading games...')}
+    </main>
 </section>`;
-
-const lobbyCard = game => html`
-<li>${game.name} <a class="button" href="/games/${game.objectId}">View Lobby</a></li>`;
 
 const gamesList = (games) => games.length == 0
     ? html`<p>No lobbies hosted yet. <a href="/create">Be the first!</a></p>`
@@ -19,6 +18,9 @@ const gamesList = (games) => games.length == 0
 <ul>
     ${repeat(games, g => g.objectId, lobbyCard)}
 </ul>`;
+
+const lobbyCard = game => html`
+<li><a class="lobby-link" href="/games/${game.objectId}">${game.name}</a></li>`;
 
 export async function catalogView(ctx) {
     ctx.render(catalogTemplate(loadGames()));

@@ -7,7 +7,9 @@ const detailsTemplate = (gamePromise) => html`
 <section>
     ${until(gamePromise, html`
     <h1>Lobby</h1>
-    <p>Loading details ...</p>`)}
+    <main>
+        <p>Loading details ...</p>
+    </main>`)}
 </section>`;
 
 
@@ -21,8 +23,10 @@ async function loadGame(ctx) {
 
     return html`
         <h1>${game.name}</h1>
-        <p>Mode: ${game.mode}</p>
-        <p><button @click=${joinGame} class="button">Join Game</button></p>`;
+        <main>
+            <p>Mode: ${game.mode}</p>
+            <p><button @click=${joinGame} class="button">Join Game</button></p>
+        </main>`;
 
     function joinGame(event) {
         event.target.disabled = true;

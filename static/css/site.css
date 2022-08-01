@@ -41,20 +41,23 @@ nav a {
     display: block;
     float: left;
     padding: 4px 8px;
-    background-color:rgb(129, 200, 130);
+    background-color: rgb(129, 200, 130);
 }
 
 nav a:hover {
     cursor: pointer;
-    background-color:rgb(200, 161, 129);
+    background-color: rgb(200, 161, 129);
 }
 
 ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 section {
-    margin: 32px;
+    margin-top: 32px;
+    margin-bottom: 32px;
     box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -67,7 +70,7 @@ section {
 section h1 {
     background-color: rgb(37, 92, 38);
     color: white;
-    padding: 8px 16px;
+    padding: 8px 32px;
     margin: 0;
 }
 
@@ -97,21 +100,22 @@ label span {
     display: block;
     margin: auto;
     padding: 8px 16px;
-    background-color:rgb(129, 200, 130);
+    background-color: rgb(129, 200, 130);
     border: none;
     font-weight: bold;
 }
 
-.action:hover, .button:hover {
+.action:hover,
+.button:hover {
     cursor: pointer;
-    background-color:rgb(200, 161, 129);
+    background-color: rgb(200, 161, 129);
     box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2);
 }
 
 .button {
     display: inline-block;
     padding: 8px 16px;
-    background-color:rgb(129, 200, 130);
+    background-color: rgb(129, 200, 130);
     border: none;
     font-weight: bold;
 }
@@ -121,4 +125,28 @@ canvas {
     border: 1px solid orange;
     margin-left: auto;
     margin-right: auto;
+}
+
+main {
+    padding: 32px;
+}
+
+.logo-img {
+    width: 32px;
+    height: 32px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.lobby-link {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.lobby-link:hover {
+    color: rgb(200, 161, 129);
 }
